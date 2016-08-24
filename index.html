@@ -11,6 +11,25 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <script src="browser-deeplink.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    function openApp(uri) {
+        deeplink.setup({ android: { appId: "com.blacklane.passenger.dev" } });
+        deeplink.open(uri);
+        return false;
+    }
+    function openPlayStore(uri) {
+        deeplink.setup({ android: { appId: "com.blacklane.passenger" } });
+        deeplink.open(uri);
+        return false;
+    }
+    function openWeb(uri) {
+        deeplink.setup({ android: { appId: "com.blacklane.passenger" }, fallbackToWeb: true });
+        deeplink.open(uri);
+        return false;
+    }
+    </script>
 </head>
 <body>
 <div class="wrapper">
@@ -33,19 +52,26 @@
     </header>
     <section>
         <h3>Welcome to BlackLink Demo.</h3>
-        <p>Use the links below to test out different deeplink scenarios.</p>
+        <p>Install the provided .apk and use the links below to test out different deeplinks.</p>
 
-        <h3>Custom scheme</h3>
-        <p>Legacy method of deeplinking. Fails with error when app is not installed.</p>
+        <br/><h3>App link</h3>
+        <p>
+            Either fails with error or does nothing when app is not installed.
+            <br/> We can't link directly to this, as we won't know if the app is installed.
+        </p>
         <p>  
             Installed app: <a href="blacklane://splash">blacklane://splash</a>
             <br/>No app: <a href="blacklane2://splash">blacklane2://splash</a>
         </p>
 
-        <h3>Chrome Intent link</h3>
+        <br/><h3>
+            <a id="javascript" class="anchor" href="#javascript" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>
+            Chrome intent link
+        </h3>
         <p>
-            Successor of "custom-scheme" that can handle no-app case. 
-            <br/>Only works on newer phones <b>!!</b>,
+            Wrapper around <b>App link</b> that can handle no installed app case.
+            <br/>Redirects on the phone to the play store or to a webpage.
+            <br/>Only works on phones with certain browsers <b>!!</b>,
             <a href="https://blacklane.atlassian.net/wiki/download/attachments/110199095/intent_support.png">See
                 chart.</a>
         </p>
@@ -56,27 +82,41 @@
                 href="intent://splash#Intent;scheme=blacklane;package=com.blacklane.passenger;S.browser_fallback_url=https%3A%2F%2Fwww.blacklane.com%2F;end">intent://splash#Intent;scheme=blacklane;package=com.blacklane.passenger;S.browser_fallback_url=https%3A%2F%2Fwww.blacklane.com%2F;end</a>
         </p>
 
-        <h3>Dynamic link Firebase</h3>
-        <p>Firebase handles decision of redirecting to website/app/playstore.</p>
+        <br/><h3>Javascript alternative to Chrome intent link</h3>
+        <p>
+            Runs a script on the webpage that redirects to app or play store.
+            <br/>This doesn't work on browsers that accept <b>Chrome intent link</b>.
+        </p>
+        <p>
+            Installed app: <a href="#javascript" data-uri="blacklane://splash" onclick="openApp(this.dataset.uri)">openApp("blacklane://splash")</a>
+            <br/>No app with play store: <a href="#javascript" data-uri="blacklane2://splash" onclick="openApp(this.dataset.uri)">
+            openPlayStore("blacklane2://splash")</a>
+            <br/>No app with web fallback: <a href="#javascript" data-uri="blacklane2://splash" onclick="openApp(this.dataset.uri)">
+            openWeb("blacklane2://splash")</a>
+        </p>
+
+        <br/><h3>Redirect Example</h3>
+        <p>
+            Redirects to <b>Chrome Intent link</b> if User-Agent contains "Android".
+            <br/><a href="https://arcane-taiga-88765.herokuapp.com/">https://arcane-taiga-88765.herokuapp.com/</a>
+        </p>
+
+        <br/><h3>Dynamic link from Firebase</h3>
+        <p>Firebase handles decision of redirecting to website, app or playstore.</p>
         <p>  
             Installed app: <a href="https://s5rt4.app.goo.gl/XktS">https://s5rt4.app.goo.gl/XktS</a>
             <br/>No app with play store: <a href="https://s5rt4.app.goo.gl/s2hO">https://s5rt4.app.goo.gl/s2hO</a>
             <br/>No app with web fallback: <a href="https://s5rt4.app.goo.gl/IqL8">https://s5rt4.app.goo.gl/IqL8</a>
         </p>
 
-        <h3>Redirect link</h3>
+        <br/><h3>Url handling</h3>
         <p>
-            Redirects to Chrome Intent link if User-Agent contains "Android".
-            <br/><a href="https://arcane-taiga-88765.herokuapp.com/">https://arcane-taiga-88765.herokuapp.com/</a>
+            App is configured to handle "<a href="https://www.uber.com/">https://www.uber.com/</a>" links.
+            <br/>This will display a picker asking you if you want to open the app.
+            <br/>There is no server-side to this, and it is an Android specific behavior.
         </p>
 
-        <h3>Url handling</h3>
-        <p>
-            App is configured to handle "https://www.blacklane.com" intents.
-            <br/><a href="https://www.blacklane.com/en">https://www.blacklane.com/en</a>
-        </p>
-
-        <h3>Dynamic link Adjust</h3>
+        <br/><h3>Dynamic link from Adjust</h3>
         <p>todo.</p>
 
     </section>
