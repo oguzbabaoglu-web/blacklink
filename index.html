@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Blacklink by oguzbabaoglu</title>
@@ -11,71 +11,84 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
+</head>
+<body>
+<div class="wrapper">
+    <header>
         <h1>Blacklink</h1>
         <p></p>
 
-        <p class="view"><a href="https://github.com/oguzbabaoglu/blacklink">View the Project on GitHub <small>oguzbabaoglu/blacklink</small></a></p>
+        <p class="view"><a href="https://github.com/oguzbabaoglu/blacklink">View the Project on GitHub
+            <small>oguzbabaoglu/blacklink</small>
+        </a></p>
 
 
         <ul>
-          <li><a href="https://github.com/oguzbabaoglu/blacklink/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/oguzbabaoglu/blacklink/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/oguzbabaoglu/blacklink">View On <strong>GitHub</strong></a></li>
+            <li><a href="https://github.com/oguzbabaoglu/blacklink/zipball/master">Download <strong>ZIP
+                File</strong></a></li>
+            <li><a href="https://github.com/oguzbabaoglu/blacklink/tarball/master">Download <strong>TAR
+                Ball</strong></a></li>
+            <li><a href="https://github.com/oguzbabaoglu/blacklink">View On <strong>GitHub</strong></a></li>
         </ul>
-      </header>
-      <section>
-        <h3>
-<a id="welcome-to-blacklink-demo" class="anchor" href="#welcome-to-blacklink-demo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to BlackLink Demo.</h3>
+    </header>
+    <section>
+        <h3>Welcome to BlackLink Demo.</h3>
+        <p>Use the links below to test out different deeplink scenarios.</p>
 
-<p>Use the links below to test out different deeplink scenarios.</p>
+        <h3>Custom scheme</h3>
+        <p>Legacy method of deeplinking. Fails with error when app is not installed.</p>
+        <p>  
+            Installed app: <a href="blacklane://splash">blacklane://splash</a>
+            <br/>No app: <a href="blacklane2://splash">blacklane2://splash</a>
+        </p>
 
-<h3>
-<a id="custom-scheme" class="anchor" href="#custom-scheme" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom scheme</h3>
+        <h3>Chrome Intent link</h3>
+        <p>
+            Successor of "custom-scheme" that can handle no-app case. 
+            <br/>Only works on newer phones <b>!!</b>,
+            <a href="https://blacklane.atlassian.net/wiki/download/attachments/110199095/intent_support.png">See
+                chart.</a>
+        </p>
+        <p>
+            Installed app: <a href="intent://splash#Intent;scheme=blacklane;package=com.blacklane.passenger.dev;end">intent://splash#Intent;scheme=blacklane;package=com.blacklane.passenger.dev;end</a>
+            <br/>No app with play store: <a href="intent://splash#Intent;scheme=blacklane;package=com.blacklane.passenger;end">intent://splash#Intent;scheme=blacklane;package=com.blacklane.passenger;end</a>
+            <br/>No app with web fallback: <a
+                href="intent://splash#Intent;scheme=blacklane;package=com.blacklane.passenger;S.browser_fallback_url=https%3A%2F%2Fwww.blacklane.com%2F;end">intent://splash#Intent;scheme=blacklane;package=com.blacklane.passenger;S.browser_fallback_url=https%3A%2F%2Fwww.blacklane.com%2F;end</a>
+        </p>
 
-<p><a href="blacklane://splash">blacklane://splash</a></p>
+        <h3>Dynamic link Firebase</h3>
+        <p>Firebase handles decision of redirecting to website/app/playstore.</p>
+        <p>  
+            Installed app: <a href="https://s5rt4.app.goo.gl/XktS">https://s5rt4.app.goo.gl/XktS</a>
+            <br/>No app with play store: <a href="https://s5rt4.app.goo.gl/s2hO">https://s5rt4.app.goo.gl/s2hO</a>
+            <br/>No app with web fallback: <a href="https://s5rt4.app.goo.gl/IqL8">https://s5rt4.app.goo.gl/IqL8</a>
+        </p>
 
-<h3>
-<a id="chrome-intent-link" class="anchor" href="#chrome-intent-link" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Chrome Intent link</h3>
+        <h3>Redirect link</h3>
+        <p>
+            Redirects to Chrome Intent link if User-Agent contains "Android".
+            <br/><a href="https://arcane-taiga-88765.herokuapp.com/">https://arcane-taiga-88765.herokuapp.com/</a>
+        </p>
 
-<p><a href="intent://www.blacklane.com#Intent;scheme=https;package=com.blacklane.passenger.dev;S.browser_fallback_url=https%3A%2F%2Fwww.blacklane.com%2F;end">intent://www.blacklane.com#Intent;scheme=https;package=com.blacklane.passenger.dev;S.browser_fallback_url=https%3A%2F%2Fwww.blacklane.com%2F;end</a></p>
-<p>See : <a href="https://developer.chrome.com/multidevice/android/intents">https://developer.chrome.com/multidevice/android/intents</a></p>
+        <h3>Url handling</h3>
+        <p>
+            App is configured to handle "https://www.blacklane.com" intents.
+            <br/><a href="https://www.blacklane.com/en">https://www.blacklane.com/en</a>
+        </p>
 
-<h3>
-<a id="url-link" class="anchor" href="#url-link" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>URL Link</h3>
+        <h3>Dynamic link Adjust</h3>
+        <p>todo.</p>
 
-<p><a href="https://www.blacklane.com/en">https://www.blacklane.com/en</a></p>
-
-<h3>
-<a id="app-indexing-digital-asset-link" class="anchor" href="#app-indexing-digital-asset-link" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>App indexing (Digital Asset Link)</h3>
-
-<p><a href="https://oguzbabaoglu-web.github.io/blacklink/splash">https://oguzbabaoglu-web.github.io/blacklink/splash</a></p>
-
-<h3>
-<a id="dynamic-link-firebase" class="anchor" href="#dynamic-link-firebase" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dynamic link Firebase</h3>
-
-<p><a href="https://s5rt4.app.goo.gl/XktS">https://s5rt4.app.goo.gl/XktS</a></p>
-
-<h3>
-<a id="dynamic-link-adjust" class="anchor" href="#dynamic-link-adjust" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dynamic link Adjust</h3>
-
-<p>todo.</p>
-
-<h3>
-<a id="redirect-link" class="anchor" href="#redirect-link" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redirect link</h3>
-
-<p>Redirects to app if User-Agent contians "Android" <br/><a href="https://arcane-taiga-88765.herokuapp.com/">https://arcane-taiga-88765.herokuapp.com/</a></p>
-
-      </section>
-      <footer>
+    </section>
+    <footer>
         <p>This project is maintained by <a href="https://github.com/oguzbabaoglu">oguzbabaoglu</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+        <p>
+            <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a>
+            </small>
+        </p>
+    </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
+
+</body>
 </html>
