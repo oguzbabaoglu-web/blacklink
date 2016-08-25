@@ -52,9 +52,9 @@
     </header>
     <section>
         <h3>Welcome to BlackLink Demo.</h3>
-        <p>Install the provided .apk and use the links below to test out different deeplinks.</p>
+        <p>Use the links below to test out different deeplinks.</p>
 
-        <br/><h3>App link</h3>
+        <br/><h3>URI scheme</h3>
         <p>
             Either fails with error or does nothing when app is not installed.
             <br/> We can't link directly to this, as we won't know if the app is installed.
@@ -108,12 +108,21 @@
             <br/>No app with play store: <a href="https://s5rt4.app.goo.gl/s2hO">https://s5rt4.app.goo.gl/s2hO</a>
             <br/>No app with web fallback: <a href="https://s5rt4.app.goo.gl/IqL8">https://s5rt4.app.goo.gl/IqL8</a>
         </p>
+        
+        <br/><h3>Dynamic link from Branch.io</h3>
+        <p>Branch.io handles decision of redirecting to website, app or playstore.</p>
+        <p>  
+            Installed app: <a href="https://jqzw.test-app.link/mGtaKqbK7v">https://jqzw.test-app.link/mGtaKqbK7v</a>
+            <br/>No app with play store: <a href="https://jqzw.app.link/6s9Zei6K7v">https://jqzw.app.link/6s9Zei6K7v</a>
+            <br/>No app with web fallback: <a href="https://jqzw.app.link/v4MeeEZK7v">https://jqzw.app.link/v4MeeEZK7v</a>
+        </p>
 
-        <br/><h3>Url handling</h3>
+        <br/><h3>Url handling (App links)</h3>
         <p>
             App is configured to handle "<a href="https://www.uber.com/">https://www.uber.com/</a>" links.
             <br/>This will display a picker asking you if you want to open the app.
-            <br/>There is no server-side to this, and it is an Android specific behavior.
+            <br/>For Android 6.0+, we can skip the picker by verifying the site.
+            <br/>There is no server-side to this, and it is an Android-only feature.
         </p>
 
         <br/><h3>Dynamic link from Adjust</h3>
