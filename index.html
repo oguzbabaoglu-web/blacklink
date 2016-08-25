@@ -71,9 +71,11 @@
         <p>
             Wrapper around <b>App link</b> that can handle no installed app case.
             <br/>Redirects on the phone to the play store or to a webpage.
-            <br/>Only works on phones with certain browsers <b>!!</b>,
+            <br/>Only works on phones with newer browsers <b>!!</b>,
             <a href="https://blacklane.atlassian.net/wiki/download/attachments/110199095/intent_support.png">See
                 chart.</a>
+            <br/>Play store referrer is only supported with Chrome v53+ See
+            <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=459711">chromium bug-id:459711</a>
         </p>
         <p>
             Installed app: <a href="intent://splash#Intent;scheme=blacklane;package=com.blacklane.passenger.dev;end">intent://splash#Intent;scheme=blacklane;package=com.blacklane.passenger.dev;end</a>
