@@ -96,6 +96,7 @@
         <p>
             Runs a script on the webpage that redirects to app or play store.
             <br/>This doesn't work on browsers that accept <b>Chrome intent link</b>.
+            <br/>Check page source and browser-deeplink.js to see the code.
         </p>
         <p>
             Installed app: <a href="#javascript" data-uri="blacklane://splash" onclick="openApp(this.dataset.uri)">openApp("blacklane://splash")</a>
@@ -107,7 +108,9 @@
 
         <br/><h3>Redirect Example</h3>
         <p>
-            Redirects to <b>Chrome Intent link</b> if User-Agent contains "Android".
+            This link redirects to a <b>Chrome Intent link</b> if User-Agent contains "Android".
+            <br/>Otherwise redirects to www.blacklane.com.
+            <br/>Hosted on a free dyno, it will take some time on first launch.
             <br/><a href="https://arcane-taiga-88765.herokuapp.com/">https://arcane-taiga-88765.herokuapp.com/</a>
         </p>
 
