@@ -32,56 +32,20 @@
         </ul>
     </header>
     <section>
-        <h3>Welcome to BlackLink Demo.</h3>
-        <p>Use the links below to test out different deeplinks from a mobile phone.</p>
-        <p>Use <a href="desktop.html">this page</a> to test responses from terminal.</p>
+        <h3>Desktop Tests.</h3>
+        <p>Use the user agents below with curl to test responses from terminal.</p>
+        <p>curl -i --header "&lt;USER_AGENT&gt;" &lt;LINK&gt;</p>   
 
-        <br/><h3>Url handling (App links)</h3>
-        <p>
-            App can be configured to handle "<a href="https://www.blacklane.com/">https://www.blacklane.com/</a>" links.
-            <br/>This will display a picker asking you if you want to open the app.
-            <br/>For Android 6.0+, we can skip the picker by verifying the site.
-            <br/>There is no server-side to this, and it is an Android-only feature.
-        </p>
+        <br/><h3>User Agents</h3>
+        <p><b>Native Browser</b> -- "User-Agent: Mozilla/5.0 (Linux; U; Android 4.0.2; en-us; Galaxy Nexus Build/ICL53F) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30"</p>
 
-        <br/><h3>URI scheme</h3>
-        <p>
-            Either fails with error or does nothing when app is not installed.
-            <br/> We can't link directly to this, as we won't know if the app is installed.
-        </p>
-        <p>  
-            Installed app: <a href="blacklane://">blacklane://</a>
-            <br/>No app: <a href="noapp://">noapp://</a>
-        </p>
+        <p><b>Old Chrome</b> -- "User-Agent: Mozilla/5.0 (Linux; Android 4.0.4; Galaxy Nexus Build/IMM76B) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.133 Mobile Safari/535.19"</p>
 
-        <br/><h3>
-            Chrome intent link
-        </h3>
-        <p>
-            Chrome specific link that can handle no installed app case. 
-            <br/>Redirects on the phone to the play store or to a webpage.
-            <br/>Only works on phones with certain browsers <b>!!</b>,
-            <a href="https://blacklane.atlassian.net/wiki/download/attachments/110199095/intent_support.png">See
-                chart.</a>
-            <br/>Play store referrer is only supported with Chrome v53+ See
-            <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=459711">chromium bug-id:459711</a>
-        </p>
-        <p>
-            With play store: 
-            <br/><a href="intent://#Intent;scheme=blacklane;package=com.blacklane.passenger;end">
-            intent://#Intent;scheme=blacklane;package=com.blacklane.passenger;end</a>
-            <br/>With web fallback: 
-            <br/><a href="intent://#Intent;scheme=blacklane;package=com.blacklane.passenger;S.browser_fallback_url=https%3A%2F%2Fwww.blacklane.com%2F;end">intent://#Intent;scheme=blacklane;package=com.blacklane.passenger;S.browser_fallback_url=https%3A%2F%2Fwww.blacklane.com%2F;end</a>
-        </p>
+        <p><b>New Chrome</b> -- "User-Agent: Mozilla/5.0 (Linux; Android 7.0; Nexus 5X Build/N5D91L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.85 Mobile Safari/537.36"</p>
 
-        <br/><h3>Javascript alternative to Chrome intent link</h3>
-        <p>
-            Runs a script on the webpage that redirects to app or play store.
-            <br/>This doesn't work on browsers that accept <b>Chrome intent link</b>.
-        </p>
-        <p>
-            Adjust script: <a href="adjust.html">Run script</a>
-        </p>
+        <p><b>Opera</b> -- "User-Agent: Mozilla/5.0 (Linux; Android 7.0; Nexus 5X Build/N5D91L) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.52 Mobile Safari/537.36 OPR/15.0.1147.100"</p>
+
+        <p><b>Firefox</b> -- "User-Agent: Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0"</p>
 
         <br/><h3>Dynamic link from Firebase</h3>
         <p>Firebase handles decision of redirecting to website, app or playstore.</p>
